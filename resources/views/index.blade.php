@@ -223,7 +223,7 @@
 
             <script>
                 let images = @json($images);
-                let cpt = 1;
+                let cpt = 0;
 
                 setInterval(() => {
                     cpt = (cpt + 1) % images.length;
