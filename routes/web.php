@@ -9,7 +9,7 @@ Route::get('/admin/add', [EssenController::class, 'create'])->name('products.add
 Route::post('/admin/store', [EssenController::class, 'store'])->name('products.store');
 Route::get('/admin/edit/{id}', [EssenController::class, 'edit'])->name('products.edit');
 Route::put('/admin/update/{id}', [EssenController::class, 'update'])->name('products.update');
-Route::delete('/admin/delete/{id}', [EssenController::class, 'destroy'])->name('products.delete');
+Route::delete('/admin/delete/{id}', [EssenController::class, 'destroy'])->name('products.delete_');
 Route::get('/product/{id}', [EssenController::class, 'show'])->name('products.show');
 Route::get('/product/more/{id}', [EssenController::class, 'more'])->name('products.more');
 Route::get('/product/buy/{id}', [BuyController::class, 'buy'])->name('products.buy');
