@@ -97,7 +97,7 @@
                     <td style="display: flex; justify-content: center; align-items: center;">
                         <a href="{{route('products.edit',$product->id)}}" style="margin-left: 5%">تعديل</a>
                          <a href="{{route('products.show',$product->id)}}" style="margin-left: 5%">show</a>
-                         <form action="{{route('products.delete',$product->id)}}" method="post">
+                         <form action="{{route('products.delete_',$product->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn-delete">حذف</button>
