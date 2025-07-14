@@ -1,4 +1,3 @@
-<!-- filepath: c:\xampp\htdocs\Ecomerce\resources\views\index.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +49,6 @@
             color: #cc800e;
         }
 
-        /* ...existing code... */
         .card {
             background: #fff;
             border-radius: 16px;
@@ -74,52 +72,19 @@
             border-radius: 12px;
             margin-bottom: 10px;
             transition: transform 0.4s ease;
-
         }
 
         .card-title {
             font-size: 1.2rem;
             font-weight: bold;
-            font-family: 'Courier New', Courier, monospace margin-bottom: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 8px;
         }
 
         .card-desc {
             color: #555;
             font-size: 1rem;
             margin-bottom: 12px;
-        }
-
-        .card-btn {
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
-            border: none;
-            border-radius: 8px;
-            padding: 8px 24px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .card-btn a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .card-btn:hover {
-            background: linear-gradient(to right, #feb47b, #ff7e5f);
-        }
-
-        .card:hover img {
-            transform: scale(1.09);
-        }
-
-        .card-price {
-            color: #cc800e;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .card-desc {
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 4;
@@ -141,7 +106,32 @@
             margin-top: 5px;
         }
 
-        /* Responsive Anpassungen */
+        .card-btn {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            border: none;
+            border-radius: 8px;
+            padding: 8px 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .card-btn a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .card-btn:hover {
+            background: linear-gradient(to right, #feb47b, #ff7e5f);
+        }
+
+        .card-price {
+            color: #cc800e;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
         @media (max-width: 991px) {
             header ul {
                 gap: 30px;
@@ -200,87 +190,63 @@
 
 <body>
     <header>
-        <img src="{{asset('img/logo.png')}}" alt="">
+        <img src="{{ asset('img/logo.png') }}" alt="">
         <ul>
-            <li><a href="{{route('products.index')}}">الصفحة الرئيسية</a></li>
-            <li><a href="{{route('products.about')}}"> من نحن</a></li>
-            <li><a href="{{route('products.contact')}}" style="margin-right: 30px">تواصل معنا</a></li>
+            <li><a href="{{ route('products.index') }}">الصفحة الرئيسية</a></li>
+            <li><a href="{{ route('products.about') }}">من نحن</a></li>
+            <li><a href="{{ route('products.contact') }}" style="margin-right: 30px">تواصل معنا</a></li>
         </ul>
     </header>
+
     <div style="margin-top: 10px;">
-        @php
-            $images = [];
-            foreach ($products as $product) {
-                $images[] = asset('storage/' . $product->image);
-            }
-        @endphp
+        @if(isset($products) && count($products) > 0)
+            @php
+                $images = [];
+                foreach ($products as $product) {
+                    $images[] = asset('storage/' . $product->image);
+                }
+            @endphp
 
-        <div>
-            <img id="product-image" src="{{ $images[0] }}" alt="Logo"
-                style="width: 95%; height: 380px;margin: 0 auto; display: block; border-radius: 20px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
-        </div>
+            <div>
+                <img id="product-image" src="{{ $images[0] }}" alt="Logo"
+                    style="width: 95%; height: 380px;margin: 0 auto; display: block; border-radius: 20px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
+            </div>
 
-        <script>
-            let images = @json($images);
-            let cpt = 0;
+            <script>
+                let images = @json($images);
+                let cpt = 0;
 
-            setInterval(() => {
-                cpt = (cpt + 1) % images.length;
-                document.getElementById('product-image').src = images[cpt];
-            }, 2000);
-        </script>
-
-
+                setInterval(() => {
+                    cpt = (cpt + 1) % images.length;
+                    document.getElementById('product-image').src = images[cpt];
+                }, 2000);
+            </script>
+        @else
+            <p class="text-center mt-4">لا توجد منتجات لعرضها.</p>
+        @endif
     </div>
+
     <main>
-
-        <!DOCTYPE html>
-        <html lang="ar">
-
-        <head>
-            <meta charset="UTF-8">
-            <title>المنتجات</title>
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-            <style>
-                header {
-                    background-color: #343a40;
-                    color: white;
-                    padding: 20px;
-                    text-align: center;
-                }
-
-                .product-card {
-                    margin: 20px auto;
-                    max-width: 600px;
-                }
-            </style>
-        </head>
-
-        <body>
-
-
-
-
+        <div class="container mt-5">
             <div class="row">
-                @foreach ($products as $product)
+                @forelse ($products as $product)
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="Bild">
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="product">
                             <div class="card-title">{{ $product->name }}</div>
-                            <div class="card-desc">
-                                {{ $product->description }}
-                            </div>
+                            <div class="card-desc">{{ $product->description }}</div>
                             <div class="card-price">{{ $product->price }} د.ج</div>
                             <div>
-                                <button class="card-btn"><a href="{{route('products.buy', $product->id)}}"> اطلب
-                                        الآن</a></button>
-                                <button class="card-btn"><a
-                                        href="{{route('products.more', $product->id)}}">المزيد</a></button>
+                                <button class="card-btn"><a href="{{ route('products.buy', $product->id) }}">اطلب الآن</a></button>
+                                <button class="card-btn"><a href="{{ route('products.more', $product->id) }}">المزيد</a></button>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <p class="text-center">لا توجد منتجات حالياً.</p>
+                @endforelse
             </div>
+        </div>
     </main>
 </body>
 
