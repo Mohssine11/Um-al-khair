@@ -13,12 +13,12 @@
             box-shadow: 0 4px 16px rgba(0,0,0,0.08);
             padding: 32px;
             margin: 40px auto;
-            max-width: 500px;
+            max-width: 90%;
             text-align: center;
         }
         .more-img {
             width: 100%;
-            max-width: 350px;
+            max-width: 70%;
             height: 220px;
             object-fit: cover;
             border-radius: 12px;
@@ -26,22 +26,22 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
         .more-title {
-            font-size: 2rem;
+            font-size: 45px;
             font-weight: bold;
             margin-bottom: 12px;
         }
         .more-category {
             color: #ff7e5f;
-            font-size: 1.1rem;
+            font-size: 30px;
             margin-bottom: 8px;
         }
         .more-desc {
             color: #555;
-            font-size: 1.1rem;
+            font-size: 20px;
             margin-bottom: 16px;
         }
         .more-price {
-            font-size: 1.3rem;
+            font-size: 32px;
             color: #cc800e;
             font-weight: bold;
             margin-bottom: 20px;
@@ -56,6 +56,9 @@
             text-decoration: none;
             transition: background 0.2s;
             display: inline-block;
+            text-align: center;
+            width: 200px;
+            font-size: 30px;
         }
         .btn-back:hover {
             background: linear-gradient(to left, #feb47b, #ff7e5f);
