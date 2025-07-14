@@ -187,7 +187,7 @@
             }
 
             .card img {
-                height: 120px;
+                height: 150px;
             }
 
             #product-image {
