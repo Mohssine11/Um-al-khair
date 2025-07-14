@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" type="image/png" href="{{ asset('img/icon.png') }}" style="width: auto;font-size: 20px;">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         header {
             display: flex;
@@ -147,6 +147,7 @@
                 flex-direction: column;
                 height: auto;
                 padding: 10px;
+                display: flex;
             }
 
             header img {
@@ -166,6 +167,12 @@
         }
 
         @media (max-width: 576px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                display: flex;
+            }
+
             .card {
                 padding: 10px;
                 max-width: 100%;
@@ -239,8 +246,10 @@
                             <div class="card-desc">{{ $product->description }}</div>
                             <div class="card-price">{{ $product->price }} د.ج</div>
                             <div>
-                                <button class="card-btn"><a href="{{ route('products.buy', $product->id) }}">اطلب الآن</a></button>
-                                <button class="card-btn"><a href="{{ route('products.more', $product->id) }}">المزيد</a></button>
+                                <button class="card-btn"><a href="{{ route('products.buy', $product->id) }}">اطلب
+                                        الآن</a></button>
+                                <button class="card-btn"><a
+                                        href="{{ route('products.more', $product->id) }}">المزيد</a></button>
                             </div>
                         </div>
                     </div>
@@ -250,6 +259,24 @@
             </div>
         </div>
     </main>
+
+    <footer style="            background: linear-gradient(to right, #ff7e5f, #feb47b);
+ padding: 20px 0; text-align: center; direction: rtl;">
+        <p style="margin-bottom: 10px; font-weight: bold;">جميع الحقوق محفوظة © 2025 - Umm al-Khair</p>
+
+        <div style="font-size: 40px;">
+            <a href="https://www.facebook.com/mohssine.enajar" target="_blank" style="margin: 0 20px; color: #3b5998;">
+                <i class="fab fa-facebook" ></i>
+            </a>
+            <a href="https://www.instagram.com/mohssine_enajar/profilecard/?igsh=MXcxb2l5MGJnYjVrMw==" target="_blank"
+                style="margin: 0 20px; color: #e4405f;">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/212638571593" target="_blank" style="margin: 0 20px; color: #25D366;">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </footer>
 </body>
 
 </html>
