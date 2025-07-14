@@ -154,8 +154,10 @@
             }
 
             header ul {
-                flex-direction: column;
-                gap: 10px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 22px;
             }
 
             .card {
